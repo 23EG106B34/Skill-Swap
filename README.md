@@ -1,79 +1,16 @@
-# SkillSwap Nexus
+# React + Vite
 
-SkillSwap Nexus is a unique **campus time-bank platform** where students exchange mentoring hours instead of money. The app includes a React frontend, Spring Boot backend, smart skill recommendations, and complete deployment support for Render.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## What makes it unique
-- **Time-bank model**: learners barter mentoring sessions peer-to-peer.
-- **Skill matching engine**: recommends high-fit collaborations based on your learning/offering map.
-- **Swap workflow**: create, accept, reject, and cancel skill exchange requests.
-- **Demo-ready**: seeded users and skills so your minor project works instantly.
+Currently, two official plugins are available:
 
-## Tech stack
-- Frontend: React + Vite + Framer Motion + Lucide icons
-- Backend: Spring Boot 3, Spring Data JPA, Validation, BCrypt password hashing
-- Database: H2 by default (local/dev), PostgreSQL-ready via env vars
-- Deployment: Docker + Render blueprint (`render.yaml`)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Project structure
-- `frontend/` React UI
-- `backend/` Spring Boot API
-- `Dockerfile` builds frontend + backend into one Render-ready container
-- `render.yaml` Render Blueprint config
+## React Compiler
 
-## Local run
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-### 1) Backend
-```bash
-cd backend
-mvn spring-boot:run
-```
+## Expanding the ESLint configuration
 
-### 2) Frontend
-```bash
-cd frontend
-npm ci
-npm run dev
-```
-
-Frontend runs on `http://localhost:5173` and proxies `/api` to `http://localhost:8080`.
-
-## Demo accounts
-All seeded users share password: `pass1234`
-- `anaya@campus.dev`
-- `rehan@campus.dev`
-- `mira@campus.dev`
-
-## Core API routes
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `GET /api/users`
-- `GET /api/skills/marketplace`
-- `POST /api/skills/owner/{ownerId}`
-- `GET /api/skills/recommendations/{userId}`
-- `POST /api/requests`
-- `GET /api/requests/inbox/{userId}`
-- `GET /api/requests/outbox/{userId}`
-- `PATCH /api/requests/{requestId}`
-- `GET /api/dashboard/{userId}`
-- `GET /api/health`
-
-## Render deployment
-
-### Option A: one-click with Blueprint
-1. Push this repo to GitHub.
-2. In Render, choose **New + -> Blueprint**.
-3. Select this repo (Render reads `render.yaml`).
-4. Deploy.
-
-### Option B: direct Web Service
-1. Create a new **Web Service** in Render from this repo.
-2. Set environment to **Docker**.
-3. Render uses `Dockerfile` automatically.
-4. After deploy, open `/api/health` to verify status `UP`.
-
-## Environment variables (optional)
-- `SPRING_DATASOURCE_URL`
-- `SPRING_DATASOURCE_USERNAME`
-- `SPRING_DATASOURCE_PASSWORD`
-- `SPRING_JPA_HIBERNATE_DDL_AUTO` (default `update`)
-- `FRONTEND_ORIGIN` (default `http://localhost:5173`)
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
